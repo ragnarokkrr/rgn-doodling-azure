@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-11-02T11:12:36+00:00
+
+====== Home ======
+Created Tuesday 02 November 2021
+
+
+===== REF =====
+
+[[.\COSMOS DB.mm]]
+
+===== LOG =====
+
+==== 20211102 ====
+
+youtube lists mounted
