@@ -1,0 +1,4 @@
+
+spring.data.mongodb:
+  uri: ${COSMOS_DB_URI}
+  database: cosmos_emulator

@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-11-05T16:31:25+00:00
+
+====== TaskCosmosDBEmulator ======
+Created Friday 05 November 2021
+
+===== REF =====
+https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator?tabs=ssl-netstd21
+https://robomongo.org/
+
+https://stackoverflow.com/questions/57094871/failed-to-connect-to-local-azure-cosmosdb-emulator
+https://stackoverflow.com/questions/57094871/failed-to-connect-to-local-azure-cosmosdb-emulator
+
+
+===== LOG =====
+
+==== 20211105 ====
+Connect to robomongo
+
+ cd "C:\Program Files\Azure Cosmos DB Emulator\"
+
+''.\CosmosDB.Emulator.exe /DataPath="$env:localappdata\CosmosDBEmulator\MongoDb" /EnableMongoDbEndpoint=4.0''
+
+''.\CosmosDB.Emulator.exe /shutdown''
+
+

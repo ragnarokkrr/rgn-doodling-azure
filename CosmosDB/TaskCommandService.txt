@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2021-11-05T17:57:34+00:00
+
+====== TaskCommandService ======
+Created Friday 05 November 2021
+
+===== Ref =====
+https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+https://www.baeldung.com/spring-data-mongodb-tutorial
+
+
+https://spring.io/guides/gs/accessing-data-mongodb/
+https://spring.io/guides/gs/accessing-mongodb-data-rest/
+https://spring.io/guides/tutorials/rest/
+
+https://www.mongodb.com/compatibility/spring-boot
+
+
+https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator-export-ssl-certificates#export-emulator-certificate
+
+===== LOG =====
+
+==== 20211105 ====
+
+
+https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator-export-ssl-certificates#export-emulator-certificate
+https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator-export-ssl-certificates#use-the-certificate-with-java-apps
+
+add certs to jvm
+''/C/opt/java/zulu-11''
+
+
+
+http PUT localhost:8080/customers/1  firstName=John lastName=Connor
+http PUT localhost:8080/customers/1  firstName="John Updated" lastName=Connor
+http PUT localhost:8080/customers/2  firstName=Sarah lastName=Connor
+http GET localhost:8080/customers
+http GET localhost:8080/customers lastName==Connor
+http GET localhost:8080/customers/1
+http DELETE localhost:8080/customers/1

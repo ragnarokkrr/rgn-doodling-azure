@@ -11,6 +11,23 @@ Created Tuesday 02 November 2021
 [[.\COSMOS DB.mm]]
 
 ===== LOG =====
+[ ] [[TaskCosmosDBEmulator]]
+	[*] windows
+	[ ] linux
+	[ ] windows wsl
+[ ] [[TaskCommandService]]
+	[ ] Spring mvc imperative
+	[ ] Spring webflux reactive
+[ ] [[TaskReadService]] 
+	[ ] Consuming change Stream
+	[ ] Spring mvc imperative
+	[ ] Spring webflux reactive
+[ ] Future kafka streams / kafka connect
+
+==== 20211103 ====
+created new repo
+[[TaskCosmosDBEmulator]]
+
 
 ==== 20211102 ====
 
