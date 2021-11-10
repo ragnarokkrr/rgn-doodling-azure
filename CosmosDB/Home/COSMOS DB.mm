@@ -275,7 +275,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Modeling" POSITION="right" ID="ID_90823870" CREATED="1610381622019" MODIFIED="1636444367377" HGAP_QUANTITY="39.64634 pt" VSHIFT_QUANTITY="17.28658 pt">
+<node TEXT="Modeling" FOLDED="true" POSITION="right" ID="ID_90823870" CREATED="1610381622019" MODIFIED="1636444367377" HGAP_QUANTITY="39.64634 pt" VSHIFT_QUANTITY="17.28658 pt">
 <edge COLOR="#ff0000"/>
 <node TEXT="tips" ID="ID_109657861" CREATED="1636446144491" MODIFIED="1636446150420">
 <node TEXT="Data modeling and schema design for Azure Cosmos DB" ID="ID_1201198400" CREATED="1610381622019" MODIFIED="1635854493586" HGAP_QUANTITY="15.7561 pt" VSHIFT_QUANTITY="-15.80488 pt"/>
@@ -288,6 +288,7 @@
 <node TEXT="update duplicated data via change feed from master record" ID="ID_974835285" CREATED="1636382980089" MODIFIED="1636383006654"/>
 </node>
 <node TEXT="https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/" ID="ID_1783055371" CREATED="1636453574695" MODIFIED="1636453574695" LINK="https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/"/>
+<node TEXT="Event-driven Java with Spring Cloud Stream Binder for Azure Event Hubs" ID="ID_591183453" CREATED="1636472288970" MODIFIED="1636472309161" LINK="https://azure.microsoft.com/en-gb/blog/event-driven-java-with-spring-cloud-stream-binder-for-azure-event-hubs/"/>
 </node>
 <node TEXT="partitioning" ID="ID_1692132824" CREATED="1636444370381" MODIFIED="1636444373372">
 <node TEXT="https://www.youtube.com/watch?v=SS6WrQ-HJ30" FOLDED="true" ID="ID_1731553936" CREATED="1636444376831" MODIFIED="1636444376831" LINK="https://www.youtube.com/watch?v=SS6WrQ-HJ30">
@@ -349,7 +350,7 @@
 </node>
 </node>
 </node>
-<node TEXT="Mongodb creating sharded collections" ID="ID_776219651" CREATED="1636453764021" MODIFIED="1636453775273">
+<node TEXT="Mongodb creating sharded collections" FOLDED="true" ID="ID_776219651" CREATED="1636453764021" MODIFIED="1636453775273">
 <node TEXT="https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/custom-commands#create-collection" ID="ID_1210004820" CREATED="1636453485958" MODIFIED="1636453485958" LINK="https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/custom-commands#create-collection"/>
 <node TEXT="https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/custom-commands#create-a-sharded-collection" ID="ID_697130565" CREATED="1636453708901" MODIFIED="1636453708901" LINK="https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/custom-commands#create-a-sharded-collection"/>
 <node TEXT="https://stackoverflow.com/questions/47538573/specifing-a-sharded-collection-with-spring-data-mongodb" ID="ID_1741664719" CREATED="1636453779946" MODIFIED="1636453779946" LINK="https://stackoverflow.com/questions/47538573/specifing-a-sharded-collection-with-spring-data-mongodb"/>
