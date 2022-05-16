@@ -1,0 +1,1540 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>COSMOS DB
+Migration//mm2html.xsl FreeplaneVersion:freeplane 1.9.0</title><style>
+          body{
+          font-size:10pt;
+          color:rgb(0,0,0);
+          backgound-color:rgb(255,255,255);
+          font-family:sans-serif;
+          }
+          p.info{
+          font-size:8pt;
+          text-align:right;
+          color:rgb(127,127,127);
+          }
+        </style></head><body>
+
+<ul><li><a name="ID_191153586"></a><pre style="color:#000000;font-family:segoe print;font-size:22;">COSMOS DB
+Migration</pre>
+
+
+
+    
+
+
+
+
+
+<ul><li><a name="ID_495676614"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Architectural Design Patterns</pre>
+
+
+<ul><li><a name="ID_273436263"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Event Sourcing</pre>
+
+
+
+
+  
+
+  
+
+  
+  
+  
+
+<ul><li><a name="ID_588194298"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Document CDB</pre>
+
+
+<ul><li><a name="ID_618510901"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">optimized for heavy inserts</pre>
+
+
+<ul><li><a name="ID_1979935313"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">multi region</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1557620440"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">partitioning</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1184424953"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Write</pre>
+
+
+<ul><li><a name="ID_871655797"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Event hubs</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_397129305"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">azure functions</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1412549017"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">overall arch</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1284672352"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Read</pre>
+
+
+<ul><li><a name="ID_50971922"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Materialized Views</pre>
+
+
+<ul><li><a name="ID_533807803"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">pull model</pre>
+
+
+<ul><li><a name="ID_1150456106"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">console?</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_288776091"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">cahnge processor</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1838790522"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">azure function</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_552239405"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">pre-calculated</pre>
+
+
+<ul><li><a name="ID_174006852"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">no need to reprocessing</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1255095412"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">economy</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1226640933"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">CosmosDB feed</pre>
+
+
+
+</li></ul>
+<img src="COSMOS%20DB_files/CosmosDB_eventSourcing.png"></li></ul>
+<ul><li><a name="ID_1844889817"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">ref</pre>
+
+
+<ul><li><a name="ID_11116952"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">https://www.youtube.com/watch?v=-rRhqAIwF70&amp;list=PLfjshleSzeyBMtoUjZWa5uFnagF9hUBJl&amp;index=1</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_344751133"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">CQRS</pre>
+
+
+<ul><li><a name="ID_1172485872"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Pattern: Command Query Responsibility Segregation (CQRS)</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_667823867"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">MS - CQRS pattern</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_958476412"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Design Patterns /
+Data Modeling</pre>
+
+
+<ul><li><a name="ID_1052022644"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Design Paterns</pre>
+
+
+<ul><li><a name="ID_1986423398"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Consistency levels in Azure Cosmos DB</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1962664520"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Best practices for scaling provisioned throughput (RU/s)</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_518692159"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Azure Cosmos DB Design Patterns</pre>
+
+
+<ul><li><a name="ID_1863462029"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Design Patterns ("approaches")</pre>
+
+
+
+
+  
+    
+  
+  
+    
+      Keep in mind Request Unit(RU)
+    
+  
+
+
+<ul><li><a name="ID_1920251274"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Profiling for Purpose</pre>
+
+
+<ul><li><a name="ID_268154356"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Premium Customers</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1852605385"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Standard Customers</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1204028974"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Free / Basic Customers</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_160763667"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Inactive Customers</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_122070923"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">profiling_forpurpose.png</pre>
+
+
+
+</li></ul>
+<img src="COSMOS%20DB_files/profiling_forpurpose.png"></li></ul>
+<ul><li><a name="ID_638160714"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Profiling for time</pre>
+
+
+<ul><li><a name="ID_1919874835"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Example</pre>
+
+
+
+
+  
+    
+  
+  
+    
+      Change Feed Enabling Data lifecycle
+    
+  
+
+
+<ul><li><a name="ID_1926178355"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">real-time (5-10 min)</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1780998973"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">daily</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1055733700"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Montlhy Data</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1175744875"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Example 2</pre>
+
+
+<ul><li><a name="ID_1001273043"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">CosmosDB R/W - "HotData"</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_8594539"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">CosmosDB Read - "Warm Data"</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1116720226"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">CosmosDB Analytical Store - "Cold Data"</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1838517266"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">profiling_for_time.png</pre>
+
+
+
+</li></ul>
+<img src="COSMOS%20DB_files/profiling_for_time.png"></li></ul>
+<ul><li><a name="ID_567723227"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Caching</pre>
+
+
+<ul><li><a name="ID_1348438335"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">could/should be used to reduce RU cost</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1536241135"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Streaming</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1992986877"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Data Offloading</pre>
+
+
+<ul><li><a name="ID_1416821414"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Targets</pre>
+
+
+<ul><li><a name="ID_1785907823"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Change Feed</pre>
+
+
+
+
+  
+    
+  
+  
+    
+      Custom Logic
+    
+  
+
+
+</li></ul>
+<ul><li><a name="ID_993703125"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Sytnapse Link</pre>
+
+
+<ul><li><a name="ID_345786484"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">large scale queries</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1798798384"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Azure Data Explorer</pre>
+
+
+
+
+  
+    
+  
+  
+    
+      Time series
+    
+  
+
+
+<ul><li><a name="ID_1348524373"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Event Hub</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_960954641"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Change feed</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1596943427"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Benefits</pre>
+
+
+<ul><li><a name="ID_563347573"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Reduce run rate of your Cosmos DB deployment</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1153100428"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Benefit from fast lookups and queries with narrwo WHERE clause</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_629745781"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Enjoy full-scale capabilities of specialized engines (aggregations, joins, complex queries)</pre>
+
+
+<ul><li><a name="ID_1096664"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Azure Synapse Analystics</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_392155674"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Azure Data Explorer</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_392407892"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Dealing with Large-Scale Events using temporary structures</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1054706731"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Data Migration Scripts as a Core Design Block</pre>
+
+
+<ul><li><a name="ID_278624975"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">data_migration.png</pre>
+
+
+
+</li></ul>
+<img src="COSMOS%20DB_files/data_migration.png"></li></ul>
+<ul><li><a name="ID_968934968"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Designing a Test/Dev environment</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_17270505"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Data Migration Engine</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1033785237"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">MS Best Practices</pre>
+
+
+<ul><li><a name="ID_1031120612"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Optimizing for development and testing</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_79461597"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Understanding your Azure Cosmos DB bill</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1464922281"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Optimizing throughput cost</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1583656262"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Optimizing storage cost</pre>
+
+
+<ul><li><a name="ID_798966768"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Optimize cost with time to live and change feed</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_124996401"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Optimizing the cost of queries</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_203046119"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Optimising the cost for multi-region Azure Cosmos Feed</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_903669612"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Ref</pre>
+
+
+<ul><li><a name="ID_1390310867"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://www.youtube.com/watch?v=5YNJpGwj_Zs&amp;list=PLfjshleSzeyBMtoUjZWa5uFnagF9hUBJl&amp;index=2</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_385002005"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1964036304"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://azure.microsoft.com/en-us/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_348738021"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Capacity</pre>
+
+
+<ul><li><a name="ID_762482979"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">How to scale-up RU/s without changing partition layout</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_90823870"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Modeling</pre>
+
+
+<ul><li><a name="ID_744391648"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Patterns (Looking for reference</pre>
+
+
+<ul><li><a name="ID_355526455"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+      
+        Cosmos DB makes it easy to build scalable applications
+      
+    
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_1678058159"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+      
+        These patterns are exceptions to the rule!
+      
+    
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_278960543"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+      
+        Quick overview of concepts
+      
+    
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_1600531261"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+      
+        Vanilla (1:1 and 1:N)
+      
+    
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_1724420848"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+      
+        M:N
+      
+    
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_493877895"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+      
+        Time-series data
+      
+    
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_1835097766"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+      
+        Write heavy (Event sourcing)
+      
+    
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_1243989962"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+      
+        Handling hot spots
+      
+    
+  
+
+
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_109657861"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">tips</pre>
+
+
+<ul><li><a name="ID_1201198400"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Data modeling and schema design for Azure Cosmos DB</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1564195023"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://azurecosmosdb.github.io/labs/</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1423412803"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">TTL</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_234312911"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">moving to cold storage</pre>
+
+
+<ul><li><a name="ID_806916294"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Cosmos HTAP Solution</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1487211738"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">denormalization</pre>
+
+
+<ul><li><a name="ID_974835285"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">update duplicated data via change feed from master record</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1783055371"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_591183453"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Event-driven Java with Spring Cloud Stream Binder for Azure Event Hubs</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1692132824"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">partitioning</pre>
+
+
+<ul><li><a name="ID_1731553936"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Azure Cosmos DB - Partitioning</pre>
+
+
+<ul><li><a name="ID_34406018"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">cosmos cb handles under the hoods</pre>
+
+
+<ul><li><a name="ID_1417971089"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">distribution</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1692129896"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">balancing</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1429633981"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">rescaling</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1097283903"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">partition key</pre>
+
+
+<ul><li><a name="ID_528056235"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">logical patition abstration</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_993112944"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">consistent hashing</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_724017660"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">physical partition sets</pre>
+
+
+<ul><li><a name="ID_517624225"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">pesudo random distribution</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1681867491"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">partition ranges dynamically sub-divided</pre>
+
+
+<ul><li><a name="ID_1049584732"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">seamlessly subdivide on growth demand</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_817977196"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">partition key</pre>
+
+
+<ul><li><a name="ID_760585047"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Design Goals</pre>
+
+
+<ul><li><a name="ID_852870548"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">distribute</pre>
+
+
+<ul><li><a name="ID_1616363974"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">storage volumes</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_651504626"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">overall request</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1092952158"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">scope for eficient</pre>
+
+
+<ul><li><a name="ID_1417668124"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">queries</pre>
+
+
+<ul><li><a name="ID_1565883422"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">routed via PK</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1363317998"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">transition</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1447588519"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">beware fan-out</pre>
+
+
+<ul><li><a name="ID_185198775"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">when partition key is ommited</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1947084322"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Steps for Success</pre>
+
+
+<ul><li><a name="ID_1553189474"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">ballpark scale need</pre>
+
+
+<ul><li><a name="ID_824540535"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">size/throughtput</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_600535323"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">understand workload</pre>
+
+
+<ul><li><a name="ID_900299586"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">read heavy</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1534310301"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">write heavy</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_727196354"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">5 reads for every write?</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1043848726"></a><pre style="color:#000000;font-family:sansserif;font-size:10;"># reads / sec
+vs
+writes / sec</pre>
+
+
+<ul><li><a name="ID_144623853"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">80/20</pre>
+
+
+<ul><li><a name="ID_489777521"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">optimize bulk of load</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1127523724"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">reads</pre>
+
+
+<ul><li><a name="ID_960830528"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">understand top x queries</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_178916599"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">common filters</pre>
+
+
+<ul><li><a name="ID_323394819"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">"where" clauses</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_568989181"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">writes</pre>
+
+
+<ul><li><a name="ID_909727941"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">transactional needs</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_923947670"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">ins vs upd ratio</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1340565735"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Data modeling &amp; partitioning: What every relational database dev needs to know (Ignite 2019)</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_776219651"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Mongodb creating sharded collections</pre>
+
+
+<ul><li><a name="ID_1210004820"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/custom-commands#create-collection</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_697130565"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/custom-commands#create-a-sharded-collection</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1741664719"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">https://stackoverflow.com/questions/47538573/specifing-a-sharded-collection-with-spring-data-mongodb</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_430421357"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Data Modeling and Partitioning Best Practice in Partitioned Repository Pattern With Cosmos DB</pre>
+
+
+<ul><li><a name="ID_969299980"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">https://getpocket.com/read/3200686141</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_626062834"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Partitioning and horizontal scaling in Azure Cosmos DB</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_132268879"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Data modeling in Azure Cosmos DB</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_858465076"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">How to model and partition data on Azure Cosmos DB using a real-world example</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1017643545"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">keynotes</pre>
+
+
+<ul><li><a name="ID_1289374824"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    Real world NoSQL design patterns with Azure Cosmos DB
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_581002895"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    Data Modeling and Partitioning in Azure Cosmos DB
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_1665693103"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"></pre>
+
+
+
+
+  
+    
+  
+  
+    Data modeling and schema design for Azure Cosmos DB
+  
+
+
+
+
+</li></ul>
+<ul><li><a name="ID_179146740"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Data modeling &amp; partitioning: What every relational database dev needs to know (Ignite 2019)</pre>
+
+
+<ul><li><a name="ID_470131164"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Key takeaways</pre>
+
+
+<ul><li><a name="ID_323150523"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Identify Key Access Patterns and design for then</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_131623704"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Partitioning is critical for best performance and scalability</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1843214853"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Materialize relations between entities by</pre>
+
+
+<ul><li><a name="ID_1503469756"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">embedding</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_195480114"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">sotring related entities in the same container</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1738459982"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Devops</pre>
+
+
+<ul><li><a name="ID_1883649036"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Backup / Restore</pre>
+
+
+<ul><li><a name="ID_675793724"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Online backup and on-demand data restore in Azure Cosmos DB</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_493910506"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Continuous backup mode</pre>
+
+
+
+
+  
+    
+  
+  
+    
+      Continuous backup mode &ndash; This mode allows you to do restore to any point of time within the last 30 days. You can choose this mode while creating the Azure Cosmos DB account. To learn more, see the Introduction to Continuous backup mode, provision continuous backup using Azure portal, PowerShell, CLI, or Azure Resource Manager articles. You can also migrate the accounts from periodic to continuous mode.
+    
+  
+
+
+<ul><li><a name="ID_1494412476"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Continuous backup with point-in-time restore in Azure Cosmos DB</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_573987815"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Periodic backup mode (default)</pre>
+
+
+
+
+  
+    
+  
+  
+    
+      Periodic backup mode - This mode is the default backup mode for all existing accounts. In this mode, backup is taken at a periodic interval and the data is restored by creating a request with the support team. In this mode, you configure a backup interval and retention for your account. The maximum retention period extends to a month. The minimum backup interval can be one hour. To learn more, see the Periodic backup mode article.
+    
+  
+
+
+<ul><li><a name="ID_1605044356"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Backup Retention</pre>
+
+
+
+
+  
+    
+  
+  
+    
+      Backup Retention - It represents the period where each backup is retained. You can configure it in hours or days. The minimum retention period can&rsquo;t be less than two times the backup interval (in hours) and it can&rsquo;t be greater than 720 hours.
+    
+  
+
+
+<ul><li><a name="ID_868051699"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Max=30days</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_352649183"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Configure Azure Cosmos DB account with periodic backup</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_700280984"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">monitoring</pre>
+
+
+<ul><li><a name="ID_491552947"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Data dog</pre>
+
+
+<ul><li><a name="ID_764485540"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Integrations -&gt; Microsoft Azure Cosmos DB</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1771095840"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Monitor the Azure Cosmos DB integrated cache with Datadog</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1027674473"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Monitoring Azure Cosmos DB data reference</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1651176115"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Monitoring Azure Cosmos DB using third-party solutions</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_653823571"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Expand your monitoring reach with Datadog's enhanced Azure integration</pre>
+
+
+<ul><li><a name="ID_135413137"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Cosmos DB Dashboard</pre>
+
+
+<ul><li><a name="ID_1133324592"></a><pre style="color:#000000;font-family:sansserif;font-size:10;"></pre>
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_252500730"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Provisioning</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_183740355"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">RoadMap</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1170558642"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Presentation</pre>
+
+
+<ul><li><a name="ID_475985465"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">RoadMap</pre>
+
+
+<ul><li><a name="ID_1463502506"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Devops</pre>
+
+
+<ul><li><a name="ID_309490931"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Deployment</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1601518024"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">TLS</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_395405901"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Cosmos DB Monitoring</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1733188552"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Kafka Stack Monitoring</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_275689972"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Database</pre>
+
+
+<ul><li><a name="ID_1807834627"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Backup / Restore</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1150053371"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Modeling / Parittioning</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1836551596"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">TX / No-TX</pre>
+
+
+<ul><li><a name="ID_1945241915"></a><pre style="color:#000000;font-family:sansserif;font-size:12;"> Embrace eventual Consiste</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_317681728"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Scalability</pre>
+
+
+<ul><li><a name="ID_629801310"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Segregated Write and Read Models</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1377143870"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Application</pre>
+
+
+<ul><li><a name="ID_592996326"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Service Chassis</pre>
+
+
+<ul><li><a name="ID_907003170"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Monitoring</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_769131085"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">logging</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1462207594"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">TLS</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_651587562"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Read Application</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1097326311"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Write Application</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1806004593"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">PRIVATE DOMAIN MODEL</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_662051695"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Segregate Rest API / Topics Model from Private model</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1207987615"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Patterns</pre>
+
+
+<ul><li><a name="ID_1817820435"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Scalability</pre>
+
+
+<ul><li><a name="ID_302505045"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">CQRS</pre>
+
+
+<ul><li><a name="ID_1725489763"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Advantages</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1109198511"></a><pre style="color:#000000;font-family:sansserif;font-size:10;">Disavantages</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_737384046"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Partioning</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1006598878"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Maintenaibility</pre>
+
+
+<ul><li><a name="ID_73871385"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Tier</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1681249897"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">DDD / Pojo</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_947610213"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Domain Model</pre>
+
+
+<ul><li><a name="ID_1403642326"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Built in async Enttities/Attribnutes</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1438387562"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">3 tier</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1597308844"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">DDD</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1360646617"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Hexagonal</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1960265566"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Coding</pre>
+
+
+<ul><li><a name="ID_1134980419"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">coding patterns</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1001846371"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Low Coupling</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1965901194"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Embrace Java 11+</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1362555560"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Business Decisions</pre>
+
+
+<ul><li><a name="ID_18589610"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Stick to CCAS Eccosystem</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_171334679"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Standalone CJ</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_292067584"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Undesirable - Simple Replacement</pre>
+
+
+<ul><li><a name="ID_1794176363"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Our queries are issued against one single collection</pre>
+
+
+<ul><li><a name="ID_430912199"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">EngagementAggregate</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1337761321"></a><pre style="color:#000000;font-family:sansserif;font-size:12;">Not optimized for Cosmos DB Partitioning</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_410868635"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Open Questions</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1638206796"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">CJ Suitability</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1734727520"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Cosmos DB advantages</pre>
+
+
+<ul><li><a name="ID_1418113268"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">provide a single real and reliable Source of Truth</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1288962421"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Kafka Connect Source  Connectors (or equivalent tech Like Change Streams / Azure Functions)</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_241659398"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Dedicated API</pre>
+
+
+<ul><li><a name="ID_107825759"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Mongo DB</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1518931624"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">Cassandra</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1219778128"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Elasticsearch disavantages</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_25434398"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Reference</pre>
+
+
+<ul><li><a name="ID_1313400476"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">https://www.instaclustr.com/cassandra-vs-mongodb/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=UK-SN-Cassandra+vs+MongoDB&amp;_bt=545264069187&amp;_bk=cassandra%20vs%20mongodb&amp;_bm=p&amp;_bn=g&amp;_bg=126354574079&amp;gclid=CjwKCAjwiY6MBhBqEiwARFSCPo80_WpEsaQm_Pd1odSxSS7vBcSWnz4_AwcYRHHiuXlSF1nlBQvodxoCzkkQAvD_BwE</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_162527729"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">https://azure.microsoft.com/en-gb/blog/a-technical-overview-of-azure-cosmos-db/</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_434753710"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">https://viblo.asia/p/azure-cosmos-db-a-guide-to-microsofts-database-service-1Je5EJk1KnL</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1849192363"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">What is Azure Cosmos DB analytical store?</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_567556197"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Dev environment</pre>
+
+
+<ul><li><a name="ID_1822402846"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Emulator</pre>
+
+
+<ul><li><a name="ID_844118410"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator?tabs=ssl-netstd21</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_134559932"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">Mongo DB</pre>
+
+
+<ul><li><a name="ID_1826571467"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_541649859"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://stackoverflow.com/questions/68199744/how-to-access-change-feed-in-azure-cosmos-db-emulator</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_114238710"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://docs.microsoft.com/en-us/azure/cosmos-db/linux-emulator?tabs=ssl-netstd21</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_359355245"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://docs.microsoft.com/en-us/azure/cosmos-db/emulator-command-line-parameters</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1853184465"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator-on-docker-windows?tabs=cli</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1332024516"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://azurelessons.com/start-cosmos-db-emulator/</pre>
+
+
+<ul><li><a name="ID_257502513"></a><pre style="color:#111111;font-family:sansserif;font-size:13;"> docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1721731054"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://github.com/microsoft/containerregistry</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_912250286"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator-on-docker-windows?tabs=cli</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1978045890"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://docs.microsoft.com/en-us/azure/cosmos-db/emulator-command-line-parameters</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1678366303"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://stackoverflow.com/questions/59252095/failed-to-connect-to-the-azure-cosmos-db-emulator-running-docker-using-mongo</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1788447590"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://github.com/MicrosoftDocs/azure-docs/issues/47982</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1116757244"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://github.com/Azure/azure-cosmos-db-emulator-docker/blob/master/package_scripts/startemu.cmd</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1628025349"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">DockerCompose</pre>
+
+
+<ul><li><a name="ID_242199005"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator-on-docker-windows?tabs=cli</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_145717704"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://github.com/Azure-Samples/cosmosdb-kafka-connect-docker/blob/main/docker-compose.yaml</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_882172886"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://devblogs.microsoft.com/cosmosdb/kafka-azure-cosmos-db-docker/</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_829742885"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://stackoverflow.com/questions/59252095/failed-to-connect-to-the-azure-cosmos-db-emulator-running-docker-using-mongo</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1583828086"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Application Architecture</pre>
+
+
+<ul><li><a name="ID_721185581"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">java Client</pre>
+
+
+<ul><li><a name="ID_1079413284"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://github.com/Azure-Samples/azure-cosmos-java-getting-started</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_582041846"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.azure&lt;/groupId&gt;
+      &lt;artifactId&gt;azure-cosmos&lt;/artifactId&gt;
+      &lt;version&gt;4.0.0-preview.1&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1630044211"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">DDD Lite</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1966905281"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">tiered pattern</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_501102392"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">samples</pre>
+
+
+<ul><li><a name="ID_152474481"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/create-mongodb-rust</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_222778070"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://azurecosmosdb.github.io/labs/</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_731889436"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">creating db</pre>
+
+
+<ul><li><a name="ID_509008980"></a><pre style="color:#111111;font-family:sansserif;font-size:13;">https://github.com/Azure-Samples/azure-cosmos-java-getting-started</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1306015280"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Azure Functions</pre>
+
+
+<ul><li><a name="ID_305768212"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Sample Application</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_575079876"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">MongoDB API</pre>
+
+
+<ul><li><a name="ID_1480003768"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Azure Cosmos DB API for MongoDB</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1620424864"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Azure Cosmos DB's API for MongoDB (4.0 server version): supported features and syntax</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_357599151"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/change-streams?tabs=javascript</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1192486296"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Partitioning</pre>
+
+
+<ul><li><a name="ID_1769579909"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://github.com/Azure/CosmosDB-GBB-Hackathon/blob/master/MSReady/Module1-Migrating%20MongoDB%20Apps%20to%20Azure%20Cosmos%20DB(Mongo%20API).MD</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_365193924"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_899108374"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://parveensingh.com/cosmos-db-parition-keys/#creating-cosmos-db-container-with-partition-key-using-azure-cli</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1545600347"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">driver</pre>
+
+
+<ul><li><a name="ID_1881889612"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://mvnrepository.com/artifact/org.mongodb/bson/4.0.6</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_892547674"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-reactivestreams/4.0.6</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_914626598"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-core/4.0.6</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1693303440"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/feature-support-40#transactions</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_713030544"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/create-mongodb-nodejs</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1792528813"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://mongodb.github.io/mongo-java-driver/4.0/driver/getting-started/installation/</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_53492834"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://stackoverflow.com/questions/56814957/mongodb-update-operation-with-aggregation-pipeline-results-in-error-code-14/56815285</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_336658046"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Change Stream</pre>
+
+
+<ul><li><a name="ID_1140041413"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">MongoDB: is it possible to capture TTL events with Change Stream to emulate a scheduler (cronjob)?</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1839886507"></a><pre style="color:#000000;font-family:sansserif;font-size:14;">https://www.vinsguru.com/mongodb-change-streams-reactive-spring-data/</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_519732879"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Kafka connector</pre>
+
+
+<ul><li><a name="ID_918243824"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">https://github.com/Azure-Samples/cosmosdb-kafka-connect-docker</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_1348456131"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">https://devblogs.microsoft.com/premier-developer/mixing-windows-and-linux-containers-with-docker-compose/</pre>
+
+
+</li></ul>
+</li></ul>
+<ul><li><a name="ID_1770527924"></a><pre style="color:#000000;font-family:sansserif;font-size:18;font-style:italic;">Event Hubs for Kafka</pre>
+
+
+<ul><li><a name="ID_1160134367"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Use Azure Event Hubs from Apache Kafka applications</pre>
+
+
+</li></ul>
+<ul><li><a name="ID_782213224"></a><pre style="color:#000000;font-family:sansserif;font-size:16;">Azure Schema Registry in Azure Event Hubs</pre>
+
+
+</li></ul>
+</li></ul>
+</li></ul>
+<p class="info">COSMOS DB
+Migration//mm2html.xsl FreeplaneVersion:freeplane 1.9.0</p></body></html>

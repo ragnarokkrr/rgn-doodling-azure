@@ -13,16 +13,18 @@ Created Tuesday 02 November 2021
 ===== LOG =====
 [ ] [[TaskCosmosDBEmulator]]
 	[*] windows
+	[ ] [[TaskCosmosDBEmulatorDockerWindows]]
 	[ ] linux
 	[ ] windows wsl
 [ ] [[TaskCommandService]]
-	[ ] Spring mvc imperative
+	[*] Spring mvc imperative
 	[ ] Spring webflux reactive
 [ ] [[TaskReadService]] 
-	[ ] Consuming change Stream
 	[ ] Spring mvc imperative
-	[ ] Spring webflux reactive
-[ ] Future kafka streams / kafka connect
+	[>] Spring webflux reactive
+		[>] Consuming change Stream
+	[ ] KafkaConnectorComsumption
+[ ] [[TaskCosmosDBModelling]]
 
 ==== 20211103 ====
 created new repo
